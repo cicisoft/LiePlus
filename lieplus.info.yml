@@ -1,0 +1,5 @@
+name: LiePlus
+type: module
+description: head hunter system for GoldLink
+core: 8.x
+package: GoldLink

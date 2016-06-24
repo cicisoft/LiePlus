@@ -1,0 +1,42 @@
+# Resume routing definition
+resume.settings_tab:
+  route_name: resume.settings
+  title: 'Settings'
+  base_route: resume.settings
+entity.resume.canonical:
+  route_name: entity.resume.canonical
+  base_route: entity.resume.canonical
+  title: 'View'
+
+entity.resume.edit_form:
+  route_name: entity.resume.edit_form
+  base_route: entity.resume.canonical
+  title: Edit
+
+entity.resume.delete_form:
+  route_name:  entity.resume.delete_form
+  base_route:  entity.resume.canonical
+  title: Delete
+  weight: 10
+
+# Employer routing definition
+employer.settings_tab:
+  route_name: employer.settings
+  title: 'Settings'
+  base_route: employer.settings
+entity.employer.canonical:
+  route_name: entity.employer.canonical
+  base_route: entity.employer.canonical
+  title: 'View'
+
+entity.employer.edit_form:
+  route_name: entity.employer.edit_form
+  base_route: entity.employer.canonical
+  title: Edit
+
+entity.employer.delete_form:
+  route_name:  entity.employer.delete_form
+  base_route:  entity.employer.canonical
+  title: Delete
+  weight: 10
+

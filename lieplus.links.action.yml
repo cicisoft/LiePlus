@@ -1,0 +1,10 @@
+entity.resume.add_form:
+  route_name: entity.resume.add_form
+  title: 'Add Resume'
+  appears_on:
+    - entity.resume.collection
+entity.employer.add_form:
+  route_name: entity.employer.add_form
+  title: 'Add Employer'
+  appears_on:
+    - entity.employer.collection

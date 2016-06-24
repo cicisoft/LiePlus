@@ -1,0 +1,38 @@
+add resume entities:
+  title: 'Create new Resume entities'
+
+administer resume entities:
+  title: 'Administer Resume entities'
+  description: 'Allow to access the administration form to configure Resume entities.'
+  restrict access: true
+
+delete resume entities:
+  title: 'Delete Resume entities'
+
+edit resume entities:
+  title: 'Edit Resume entities'
+
+view published resume entities:
+  title: 'View published Resume entities'
+
+view unpublished resume entities:
+  title: 'View unpublished Resume entities'
+add employer entities:
+  title: 'Create new Employer entities'
+
+administer employer entities:
+  title: 'Administer Employer entities'
+  description: 'Allow to access the administration form to configure Employer entities.'
+  restrict access: true
+
+delete employer entities:
+  title: 'Delete Employer entities'
+
+edit employer entities:
+  title: 'Edit Employer entities'
+
+view published employer entities:
+  title: 'View published Employer entities'
+
+view unpublished employer entities:
+  title: 'View unpublished Employer entities'

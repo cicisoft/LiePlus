@@ -1,0 +1,23 @@
+{#
+/**
+ * @file resume.html.twig
+ * Default theme implementation to present Resume data.
+ *
+ * This template is used when viewing Resume pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_resume()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('resume') }}>
+imya
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

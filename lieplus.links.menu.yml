@@ -1,0 +1,26 @@
+# Resume menu items definition
+entity.resume.collection:
+  title: 'Resume list'
+  route_name: entity.resume.collection
+  description: 'List Resume entities'
+  parent: system.admin_structure
+  weight: 100
+
+resume.admin.structure.settings:
+  title: Resume settings
+  description: 'Configure Resume entities'
+  route_name: resume.settings
+  parent: system.admin_structure
+# Employer menu items definition
+entity.employer.collection:
+  title: 'Employer list'
+  route_name: entity.employer.collection
+  description: 'List Employer entities'
+  parent: system.admin_structure
+  weight: 100
+
+employer.admin.structure.settings:
+  title: Employer settings
+  description: 'Configure Employer entities'
+  route_name: employer.settings
+  parent: system.admin_structure
