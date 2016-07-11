@@ -47,15 +47,12 @@ class ResumeStorageSchema extends SqlContentEntityStorageSchema {
 		if ($table_name == 'resume_field_data') {
 			switch ($field_name) {
 			case 'name':
-			case 'web':
+			case 'email':
 			case 'telephone':
-			case 'contact':
-			case 'nature':
+			case 'birthday':
+			case 'startwork':
 			case 'industry':
-			case 'city':
-			case 'size':
-			case 'fund':
-			case 'status':
+			case 'position':
 				// Improves the performance of the indexes defined
 				// in getEntitySchema().
 				$schema['fields'][$field_name]['not null'] = TRUE;
