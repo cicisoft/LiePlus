@@ -52,7 +52,7 @@ use Drupal\user\UserInterface;
  *     "add-form" = "/resume/add",
  *     "edit-form" = "/resume/{resume}/edit",
  *     "delete-form" = "/resume/{resume}/delete",
- *     "collection" = "/resume",
+ *     "collection" = "/resume/list",
  *   },
  *   field_ui_base_route = "resume.settings"
  * )

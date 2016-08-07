@@ -7,6 +7,11 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityListBuilder;
+use Drupal\Core\Link;
+use Drupal\Core\Routing\LinkGeneratorTrait;
+use Drupal\Core\Url;
 /**
  * Implements hook_help().
  */
@@ -22,3 +27,79 @@ function lieplus_help($route_name, RouteMatchInterface $route_match) {
     default:
   }
 }
+
+/**
+ * hook_theme()
+*/
+
+function lieplus_theme(){
+    return array_merge(drupal_common_theme(), array(
+        'resume' => array(
+            'render element' => 'elements',
+            'file' => 'resume.page.inc',
+        ),
+        'employer' => array(
+            'render element' => 'elements',
+            'file' => 'employer.page.inc',
+        ),
+    ));
+}
+
+function buildResumeListHeader() {
+    $header['date'] = t('Date');
+    $header['name'] = t('Name');
+    $header['base'] = array('data' => t('Base Info'), 'colspan' => 3);
+    $header['abstract'] = t('Abstract');
+    $header['owner'] = t('Owner');
+    $header['feedback'] = t('Detail Feedback');
+    $header['modify'] = t('Modified By');
+    $header['operations'] = t('Operations');
+    return $header;
+}
+
+    /**
+   * {@inheritdoc}
+   */
+function buildResumeListRow(EntityInterface $entity) {
+    /* @var $entity \Drupal\lieplus\Entity\ResumeEntity */
+    $row['date'] = t(date('Y-m-d H:i:s', $entity->changed->value));
+
+    $row['name'] = \Drupal::l(
+      $entity->label(),
+      new Url(
+        'entity.resume.canonical', array(
+          'resume' => $entity->id(),
+        )
+      )
+    );
+    //dpm($entity);
+    $row['base'] = t($entity->gender->value);
+    $row['age'] = t('%age years-old', array('%age' => $entity->getAge($entity->birthday->value)));
+    $row['workage'] = t('worked %work years', array('%work' => $entity->getAge($entity->startwork->value)));
+    $row['abstract'] = $entity->getAbstract();
+    $row['owner'] = array('data' => array(
+      '#theme' => 'username',
+      '#account' => $entity->getOwner(),
+    ));
+    $row['feedback'] = array('data' => array(
+      '#theme' => 'input',
+    ));
+    //$row['feedback'] = "TODO：feedback";
+    $row['modify'] = array('data' => array(
+      '#theme' => 'username',
+      '#account' => $entity->getOwner(),
+    ));
+
+    $links = array();
+    $links['edit'] = array(
+      'title' => t('Edit'),
+      'url' => new Url('entity.resume.canonical', array('resume' => $entity->id())),
+    );
+    $links['delete'] = array(
+      'title' => t('Delete'),
+      'url' => new Url('entity.resume.delete_form', array('resume' => $entity->id())),
+    );
+    $row['operations'] = array('data' => array('#type' => 'operations', '#links' => $links));
+    return $row;
+  }
+

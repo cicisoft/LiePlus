@@ -1,0 +1,32 @@
+
+entity.resume.home:
+  path: '/resume'
+  defaults:
+    _controller: '\Drupal\lieplus\Controller\ResumeController::home'
+    _title: 'Resume'
+  requirements:
+    _permission: 'access content'
+
+entity.resume.search:
+  path: '/resume/search'
+  defaults:
+    _controller: '\Drupal\lieplus\Controller\ResumeController::search'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'
+
+entity.resume.job:
+  path: '/resume/job'
+  defaults:
+    _controller: '\Drupal\lieplus\Controller\ResumeController::job'
+    _title: 'Job'
+  requirements:
+    _permission: 'access content'
+
+entity.resume.my:
+  path: '/resume/my'
+  defaults:
+    _controller: '\Drupal\lieplus\Controller\ResumeController::my'
+    _title: 'My'
+  requirements:
+    _permission: 'access content'

@@ -12,6 +12,9 @@ delete resume entities:
 edit resume entities:
   title: 'Edit Resume entities'
 
+view resume entities:
+  title: 'View Resume entities'
+
 view published resume entities:
   title: 'View published Resume entities'
 
@@ -30,6 +33,9 @@ delete employer entities:
 
 edit employer entities:
   title: 'Edit Employer entities'
+
+view employer entities:
+  title: 'View Employer entities'
 
 view published employer entities:
   title: 'View published Employer entities'

@@ -21,13 +21,7 @@ class ResumeEntityListBuilder extends EntityListBuilder {
 	 * {@inheritdoc}
 	 */
 	public function buildHeader() {
-		$header['date'] = $this->t('Date');
-		$header['name'] = $this->t('Name');
-		$header['base'] = array('data' => $this->t('Base Info'), 'colspan' => 3);
-		$header['abstract'] = $this->t('Abstract');
-		$header['owner'] = $this->t('Owner');
-		$header['feedback'] = $this->t('Detail Feedback');
-		$header['modify'] = $this->t('Modified By');
+		$header = buildResumeListHeader();
 		return $header + parent::buildHeader();
 	}
 
@@ -36,42 +30,11 @@ class ResumeEntityListBuilder extends EntityListBuilder {
 	 */
 	public function buildRow(EntityInterface $entity) {
 		/* @var $entity \Drupal\lieplus\Entity\ResumeEntity */
-		$row['date'] = $this->t(date('Y-m-d H:i:s', $entity->changed->value));
-
-		$row['name'] = $this->l(
-			$entity->label(),
-			new Url(
-				'entity.resume.edit_form', array(
-					'resume' => $entity->id(),
-				)
-			)
-		);
-		//dpm($entity);
-		$row['base'] = $this->t($entity->gender->value);
-		$row['age'] = $this->t('%age years-old', array('%age' => $entity->getAge($entity->birthday->value)));
-		$row['workage'] = $this->t('worked %work years', array('%work' => $entity->getAge($entity->startwork->value)));
-		$row['abstract'] = $entity->getAbstract();
-		$row['owner'] = array('data' => array(
-			'#theme' => 'username',
-			'#account' => $entity->getOwner(),
-		));
-		$row['feedback'] = array('data' => array(
-			'#theme' => 'input',
-		));
-		//$row['feedback'] = "TODO：feedback";
-		$row['modify'] = array('data' => array(
-			'#theme' => 'username',
-			'#account' => $entity->getOwner(),
-		));
+		$row = buildResumeListRow($entity);
 		return $row + parent::buildRow($entity);
 	}
 
 	public function render() {
-		$build['markup'] = array(
-			'#type' => 'markup',
-			'#markup' => $this->t('Implement method: index with parameter(s): ' . $id),
-		);
-
 		$links = array(new link(
 			'view',
 			new Url(
@@ -91,6 +54,10 @@ class ResumeEntityListBuilder extends EntityListBuilder {
 			'#theme' => 'breadcrumb',
 			'#links' => $links,
 		);
+
+/*		$build['nav'] = array(
+'#theme' => 'resume_nav',
+);*/
 		return $build + parent::render();
 
 	}
